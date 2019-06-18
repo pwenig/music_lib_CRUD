@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_201728) do
+ActiveRecord::Schema.define(version: 2019_06_18_031900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
-    t.string "artist"
+    t.bigint "artist_id"
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "singles", force: :cascade do |t|
+    t.string "title"
+    t.bigint "album_id"
+    t.index ["album_id"], name: "index_singles_on_album_id"
+  end
+
+  add_foreign_key "albums", "artists"
+  add_foreign_key "singles", "albums"
 end

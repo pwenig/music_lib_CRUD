@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+
+      <div class="form-group">
+        <%= form_for(@album, url: url) do |f| %>
+          <div class="field">
+            <%= f.label :title, 'Title', class:"col-md-4 control-label" %>
+            <%= f.text_field :title %>
+          </div>
+          <div class="field">
+            <%= f.label :artist_id, 'Artist', class:"col-md-4 control-label" %>
+            <%= f.select :artist_id, Artist.all.collect {|a| [ a.name, a.id ] }, { include_blank: true } %>
+          </div>
+          <div class="field">
+            <%= f.submit 'Save Album', class: "btn btn-default btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>

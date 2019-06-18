@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1 class="display-4"><%= @album.title %> <%= @album.artist.name %></h1>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <%= link_to 'Singles', album_singles_path(@album), class: 'btn btn-primary btn-lg' %>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+
